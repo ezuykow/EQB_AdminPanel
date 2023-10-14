@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://preparedGameDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="preparedGameDc"
+                  class="ru.ezuykow.eqbadminpanel.entity.PreparedGame">
+            <fetchPlan extends="_base">
+                <property name="game" fetchPlan="_base"/>
+                <property name="questionGroups" fetchPlan="_base"/>
+                <property name="questions" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="questionGroupsDc" property="questionGroups"/>
+            <collection id="questionsDc" property="questions"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="preparedGameDc">
+            <textField id="keyField" property="key"/>
+            <entityPicker id="gameField" property="game">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <dateTimePicker id="startedAtField" property="startedAt"/>
+            <textField id="minutesToEndField" property="minutesToEnd"/>
+        </formLayout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="questionGroupsDataGrid.add"/>
+            <button action="questionGroupsDataGrid.exclude"/>
+        </hbox>
+        <dataGrid id="questionGroupsDataGrid" dataContainer="questionGroupsDc" width="100%" height="100%">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
+            <columns>
+                <column property="name"/>
+                <column property="version"/>
+            </columns>
+        </dataGrid>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="questionsDataGrid.add"/>
+            <button action="questionsDataGrid.exclude"/>
+        </hbox>
+        <dataGrid id="questionsDataGrid" dataContainer="questionsDc" width="100%" height="100%">
+            <actions>
+                <action id="add" type="list_add" text="Fill"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
+            <columns>
+                <column property="orderPosition"/>
+                <column property="text"/>
+                <column property="answers"/>
+                <column property="additionalInfo"/>
+                <column property="version"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

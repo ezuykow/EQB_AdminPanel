@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://botMessageListView.title"
+      focusComponent="botMessagesDataGrid">
+    <data readOnly="true">
+        <collection id="botMessagesDc"
+                    class="ru.ezuykow.eqbadminpanel.entity.BotMessage">
+            <fetchPlan extends="_base"/>
+            <loader id="botMessagesDl">
+                <query>
+                    <![CDATA[select e from BotMessage e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="botMessagesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="botMessagesDataGrid.create"/>
+            <button id="editBtn" action="botMessagesDataGrid.edit"/>
+            <button id="removeBtn" action="botMessagesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="botMessagesDl"/>
+        </hbox>
+        <dataGrid id="botMessagesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="botMessagesDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="key" />
+                <column property="message"/>
+                <column property="defaultMessage"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://questionsGroupListView.title"
+      focusComponent="questionsGroupsDataGrid">
+    <data readOnly="true">
+        <collection id="questionsGroupsDc"
+                    class="ru.ezuykow.eqbadminpanel.entity.QuestionsGroup">
+            <fetchPlan extends="_base"/>
+            <loader id="questionsGroupsDl">
+                <query>
+                    <![CDATA[select e from QuestionsGroup e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="questionsGroupsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="questionsGroupsDataGrid.create"/>
+            <button id="editBtn" action="questionsGroupsDataGrid.edit"/>
+            <button id="removeBtn" action="questionsGroupsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="questionsGroupsDl"/>
+        </hbox>
+        <dataGrid id="questionsGroupsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="questionsGroupsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="name"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

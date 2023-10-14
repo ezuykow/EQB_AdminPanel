@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <item view="User.list" title="msg://ru.ezuykow.eqbadminpanel.view.user/UserListView.title"/>
+    <item view="Game.list" title="msg://ru.ezuykow.eqbadminpanel.view.game/gameListView.title"/>
+    <item view="QuestionsGroup.list"
+          title="msg://ru.ezuykow.eqbadminpanel.view.questionsgroup/questionsGroupListView.title"/>
+    <item view="Question.list" title="msg://ru.ezuykow.eqbadminpanel.view.question/questionListView.title"/>
+    <item view="Hint.list" title="msg://ru.ezuykow.eqbadminpanel.view.hint/hintListView.title"/>
+    <menu title="Live games">
+        <item view="PreparedGame.list" title="msg://ru.ezuykow.eqbadminpanel.view.preparedgame/preparedGameListView.title"/>
+        <item view="Team.list" title="msg://ru.ezuykow.eqbadminpanel.view.team/teamListView.title"/>
+    </menu>
+    <item view="BotMessage.list" title="msg://ru.ezuykow.eqbadminpanel.view.botmessage/botMessageListView.title"/>
+
+</menu-config>
