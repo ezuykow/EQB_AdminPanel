@@ -33,13 +33,10 @@
             <column name="NAME" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="DURATION" type="INT">
-                <constraints nullable="false"/>
-            </column>
             <column name="QUESTIONS_COUNT" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="MAX_HINTS_PER_QUESTION" type="INT">
+            <column name="ATTEMPT_TO_ANSWER_COUNT" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="ADDITIONAL_INFO" type="VARCHAR(1024)"/>
@@ -76,8 +73,6 @@
             <column name="GAME_ID" type="UUID">
                 <constraints nullable="false"/>
             </column>
-            <column name="STARTED_AT" type="DATETIME"/>
-            <column name="MINUTES_TO_END" type="INT"/>
             <column name="VERSION" type="INT">
                 <constraints nullable="false"/>
             </column>
@@ -110,9 +105,6 @@
             </column>
             <column name="AUTHOR_ID" type="UUID"/>
             <column name="QUESTION_GROUP_ID" type="UUID">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ORDER_POSITION" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="TEXT" type="VARCHAR(2048)">
@@ -148,9 +140,9 @@
             <column name="NAME" type="VARCHAR(255)"/>
             <column name="PREPARED_GAME_ID" type="UUID"/>
             <column name="CHAT_ID" type="BIGINT"/>
-            <column name="QUESTION_ANSWERED" type="INT"/>
+            <column name="POINTS" type="INT"/>
+            <column name="STARTED_AT" type="DATETIME"/>
             <column name="HINTS_USED" type="INT"/>
-            <column name="PLACE" type="INT"/>
             <column name="VERSION" type="INT">
                 <constraints nullable="false"/>
             </column>

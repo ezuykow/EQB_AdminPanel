@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="EQB_AdminPanel">
+        <createTable tableName="PREPARED_GAME_QUESTIONS_GROUP_LINK">
+            <column name="PREPARED_GAME_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PREPARED_GAME_QUESTIONS_GROUP_LINK"/>
+            </column>
+            <column name="QUESTIONS_GROUP_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PREPARED_GAME_QUESTIONS_GROUP_LINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="EQB_AdminPanel">
+        <addForeignKeyConstraint baseColumnNames="PREPARED_GAME_ID" baseTableName="PREPARED_GAME_QUESTIONS_GROUP_LINK"
+                                 constraintName="FK_PREGAMQUEGRO_ON_PREPARED_GAME" referencedColumnNames="ID"
+                                 referencedTableName="PREPARED_GAME"/>
+    </changeSet>
+    <changeSet id="3" author="EQB_AdminPanel">
+        <addForeignKeyConstraint baseColumnNames="QUESTIONS_GROUP_ID" baseTableName="PREPARED_GAME_QUESTIONS_GROUP_LINK"
+                                 constraintName="FK_PREGAMQUEGRO_ON_QUESTIONS_GROUP" referencedColumnNames="ID"
+                                 referencedTableName="QUESTIONS_GROUP"/>
+    </changeSet>
+    <changeSet id="4" author="EQB_AdminPanel">
+        <dropForeignKeyConstraint baseTableName="questions_group_prepared_game_link"
+                                  constraintName="fk_quegropregam_on_prepared_game"/>
+    </changeSet>
+    <changeSet id="5" author="EQB_AdminPanel">
+        <dropForeignKeyConstraint baseTableName="questions_group_prepared_game_link"
+                                  constraintName="fk_quegropregam_on_questions_group"/>
+    </changeSet>
+    <changeSet id="6" author="EQB_AdminPanel">
+        <dropTable cascadeConstraints="true" tableName="questions_group_prepared_game_link"/>
+    </changeSet>
+</databaseChangeLog>

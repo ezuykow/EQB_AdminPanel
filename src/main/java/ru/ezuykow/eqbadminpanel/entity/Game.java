@@ -44,7 +44,7 @@ public class Game {
     private Integer questionsCount;
 
     @PositiveOrZero
-    @Column(name = "MAX_HINTS_PER_QUESTION", nullable = false)
+    @Column(name = "ATTEMPT_TO_ANSWER_COUNT", nullable = false)
     @NotNull
     private Integer attemptToAnswerCount;
 

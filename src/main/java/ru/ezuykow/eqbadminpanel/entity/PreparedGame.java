@@ -6,9 +6,7 @@ import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @JmixEntity
@@ -33,50 +31,21 @@ public class PreparedGame {
     private Game game;
 
     @JoinTable(name = "PREPARED_GAME_QUESTIONS_GROUP_LINK",
-            joinColumns = @JoinColumn(name = "PREPARED_GAME_ID"),
-            inverseJoinColumns = @JoinColumn(name = "QUESTIONS_GROUP_ID"))
-    @ManyToMany
-    private Set<QuestionsGroup> questionGroups;
-
-    @JoinTable(name = "PREPARED_GAME_QUESTION_LINK",
             joinColumns = @JoinColumn(name = "PREPARED_GAME_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID"))
-    @OrderBy("orderPosition")
+            inverseJoinColumns = @JoinColumn(name = "QUESTIONS_GROUP_ID", referencedColumnName = "ID"))
     @ManyToMany
-    private List<Question> questions;
-
-    @Column(name = "STARTED_AT")
-    private LocalDateTime startedAt;
-
-    @Column(name = "MINUTES_TO_END")
-    private Integer minutesToEnd;
+    private List<QuestionsGroup> questionsGroups;
 
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
 
-    public List<Question> getQuestions() {
-        return questions;
+    public List<QuestionsGroup> getQuestionsGroups() {
+        return questionsGroups;
     }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-
-    public Set<QuestionsGroup> getQuestionGroups() {
-        return questionGroups;
-    }
-
-    public void setQuestionGroups(Set<QuestionsGroup> questionGroups) {
-        this.questionGroups = questionGroups;
-    }
-
-    public Integer getMinutesToEnd() {
-        return minutesToEnd;
-    }
-
-    public LocalDateTime getStartedAt() {
-        return startedAt;
+    public void setQuestionsGroups(List<QuestionsGroup> questionsGroups) {
+        this.questionsGroups = questionsGroups;
     }
 
     public String getKey() {

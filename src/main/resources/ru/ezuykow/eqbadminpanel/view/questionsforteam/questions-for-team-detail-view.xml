@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
-      title="msg://gameDetailView.title"
+      title="msg://questionsForTeamDetailView.title"
       focusComponent="form">
     <data>
-        <instance id="gameDc"
-                  class="ru.ezuykow.eqbadminpanel.entity.Game">
+        <instance id="questionsForTeamDc"
+                  class="ru.ezuykow.eqbadminpanel.entity.QuestionsForTeam">
             <fetchPlan extends="_base">
-                <property name="author" fetchPlan="_base"/>
+                <property name="team" fetchPlan="_base"/>
+                <property name="question" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
         </instance>
@@ -19,18 +20,20 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="gameDc">
-            <entityPicker id="authorField" property="author">
+        <formLayout id="form" dataContainer="questionsForTeamDc">
+            <entityPicker id="teamField" property="team">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
-            <textField id="nameField" property="name"/>
-            <textField id="questionsCountField" property="questionsCount"/>
-            <textField id="attemptToAnswerCountField" property="attemptToAnswerCount"/>
-            <textField id="additionalInfoField" property="additionalInfo"/>
-            <checkbox id="additionalWithQuestionField" property="additionalWithQuestion"/>
+            <entityPicker id="questionField" property="question">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="orderPositionField" property="orderPosition"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>

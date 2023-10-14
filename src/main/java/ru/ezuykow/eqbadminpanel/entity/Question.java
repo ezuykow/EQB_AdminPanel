@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -48,11 +48,19 @@ public class Question {
     private String additionalInfo;
 
     @OneToMany(mappedBy = "question")
-    private Set<Hint> hints;
+    private List<Hint> hints;
 
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
+
+    public void setHints(List<Hint> hints) {
+        this.hints = hints;
+    }
+
+    public List<Hint> getHints() {
+        return hints;
+    }
 
     public QuestionsGroup getQuestionGroup() {
         return questionGroup;
@@ -60,10 +68,6 @@ public class Question {
 
     public void setQuestionGroup(QuestionsGroup questionGroup) {
         this.questionGroup = questionGroup;
-    }
-
-    public Set<Hint> getHints() {
-        return hints;
     }
 
     public String getAdditionalInfo() {

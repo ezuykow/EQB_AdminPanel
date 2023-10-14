@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://teamListView.title"
-      focusComponent="teamsDataGrid">
+      title="msg://questionsForTeamListView.title"
+      focusComponent="questionsForTeamsDataGrid">
     <data readOnly="true">
-        <collection id="teamsDc"
-                    class="ru.ezuykow.eqbadminpanel.entity.Team">
+        <collection id="questionsForTeamsDc"
+                    class="ru.ezuykow.eqbadminpanel.entity.QuestionsForTeam">
             <fetchPlan extends="_base">
-                <property name="preparedGame" fetchPlan="_base"/>
+                <property name="team" fetchPlan="_base"/>
+                <property name="question" fetchPlan="_base"/>
             </fetchPlan>
-            <loader id="teamsDl">
+            <loader id="questionsForTeamsDl">
                 <query>
-                    <![CDATA[select e from Team e]]>
+                    <![CDATA[select e from QuestionsForTeam e]]>
                 </query>
             </loader>
         </collection>
@@ -29,25 +30,26 @@
     </actions>
     <layout>
         <genericFilter id="genericFilter"
-                       dataLoader="teamsDl">
+                       dataLoader="questionsForTeamsDl">
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <simplePagination id="pagination" dataLoader="teamsDl"/>
+            <button id="editBtn" action="questionsForTeamsDataGrid.edit"/>
+            <simplePagination id="pagination" dataLoader="questionsForTeamsDl"/>
         </hbox>
-        <dataGrid id="teamsDataGrid"
+        <dataGrid id="questionsForTeamsDataGrid"
                   width="100%"
                   minHeight="20em"
-                  dataContainer="teamsDc">
+                  dataContainer="questionsForTeamsDc">
             <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
             </actions>
             <columns>
-                <column property="name"/>
-                <column property="preparedGame"/>
-                <column property="chatId"/>
-                <column property="points"/>
-                <column property="hintsUsed"/>
-                <column property="startedAt"/>
+                <column property="team"/>
+                <column property="question"/>
+                <column property="orderPosition"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

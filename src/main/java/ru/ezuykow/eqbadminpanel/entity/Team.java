@@ -33,28 +33,25 @@ public class Team {
     @Column(name = "CHAT_ID")
     private Long chatId;
 
-    @Column(name = "QUESTION_ANSWERED")
-    private Integer questionAnswered;
+    @Column(name = "POINTS")
+    private Integer points;
 
-    @Column(name = "LAST_QUESTION_ANSWERED_AT")
-    private LocalDateTime lastQuestionAnsweredAt;
+    @Column(name = "STARTED_AT")
+    private LocalDateTime startedAt;
 
     @Column(name = "HINTS_USED")
     private Integer hintsUsed;
-
-    @Column(name = "PLACE")
-    private Integer place;
 
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
 
-    public LocalDateTime getLastQuestionAnsweredAt() {
-        return lastQuestionAnsweredAt;
+    public LocalDateTime getStartedAt() {
+        return startedAt;
     }
 
-    public void setLastQuestionAnsweredAt(LocalDateTime lastQuestionAnsweredAt) {
-        this.lastQuestionAnsweredAt = lastQuestionAnsweredAt;
+    public void setStartedAt(LocalDateTime lastQuestionAnsweredAt) {
+        this.startedAt = lastQuestionAnsweredAt;
     }
 
     public PreparedGame getPreparedGame() {
@@ -65,14 +62,6 @@ public class Team {
         this.preparedGame = preparedGame;
     }
 
-    public Integer getPlace() {
-        return place;
-    }
-
-    public void setPlace(Integer place) {
-        this.place = place;
-    }
-
     public Integer getHintsUsed() {
         return hintsUsed;
     }
@@ -81,12 +70,12 @@ public class Team {
         this.hintsUsed = hintsUsed;
     }
 
-    public Integer getQuestionAnswered() {
-        return questionAnswered;
+    public Integer getPoints() {
+        return points;
     }
 
-    public void setQuestionAnswered(Integer questionAnswered) {
-        this.questionAnswered = questionAnswered;
+    public void setPoints(Integer questionAnswered) {
+        this.points = questionAnswered;
     }
 
     public Long getChatId() {

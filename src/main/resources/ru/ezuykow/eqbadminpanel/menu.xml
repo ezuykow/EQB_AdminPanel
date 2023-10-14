@@ -10,7 +10,10 @@
     <menu title="Live games">
         <item view="PreparedGame.list" title="msg://ru.ezuykow.eqbadminpanel.view.preparedgame/preparedGameListView.title"/>
         <item view="Team.list" title="msg://ru.ezuykow.eqbadminpanel.view.team/teamListView.title"/>
+        <item view="QuestionsForTeam.list"
+              title="msg://ru.ezuykow.eqbadminpanel.view.questionsforteam/questionsForTeamListView.title"/>
     </menu>
     <item view="BotMessage.list" title="msg://ru.ezuykow.eqbadminpanel.view.botmessage/botMessageListView.title"/>
+
 
 </menu-config>
