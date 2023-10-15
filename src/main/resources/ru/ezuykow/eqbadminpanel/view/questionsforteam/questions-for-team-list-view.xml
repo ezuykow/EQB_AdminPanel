@@ -5,14 +5,14 @@
       focusComponent="questionsForTeamsDataGrid">
     <data readOnly="true">
         <collection id="questionsForTeamsDc"
-                    class="ru.ezuykow.eqbadminpanel.entity.QuestionsForTeam">
+                    class="ru.ezuykow.eqbadminpanel.entity.QuestionForTeam">
             <fetchPlan extends="_base">
                 <property name="team" fetchPlan="_base"/>
                 <property name="question" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="questionsForTeamsDl">
                 <query>
-                    <![CDATA[select e from QuestionsForTeam e]]>
+                    <![CDATA[select e from QuestionForTeam e]]>
                 </query>
             </loader>
         </collection>

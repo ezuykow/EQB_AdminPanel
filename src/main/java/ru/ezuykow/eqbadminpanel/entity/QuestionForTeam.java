@@ -15,7 +15,7 @@ import java.util.UUID;
         @Index(name = "IDX_QUESTIONS_FOR_TEAM_QUESTION", columnList = "QUESTION_ID")
 })
 @Entity
-public class QuestionsForTeam {
+public class QuestionForTeam {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id

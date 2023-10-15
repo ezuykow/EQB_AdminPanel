@@ -46,7 +46,6 @@
                 <column property="preparedGame"/>
                 <column property="chatId"/>
                 <column property="points"/>
-                <column property="hintsUsed"/>
                 <column property="startedAt"/>
             </columns>
         </dataGrid>

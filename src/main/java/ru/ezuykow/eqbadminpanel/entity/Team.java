@@ -42,9 +42,20 @@ public class Team {
     @Column(name = "HINTS_USED")
     private Integer hintsUsed;
 
+    @Column(name = "CURRENT_QUESTION")
+    private Integer currentQuestion;
+
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
+
+    public Integer getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public void setCurrentQuestion(Integer currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
 
     public LocalDateTime getStartedAt() {
         return startedAt;

@@ -1,6 +1,8 @@
 package ru.ezuykow.eqbadminpanel.view.questionsforteam;
 
-import ru.ezuykow.eqbadminpanel.entity.QuestionsForTeam;
+import com.vaadin.flow.component.grid.ItemClickEvent;
+import io.jmix.flowui.kit.component.button.JmixButton;
+import ru.ezuykow.eqbadminpanel.entity.QuestionForTeam;
 
 import ru.ezuykow.eqbadminpanel.view.main.MainView;
 
@@ -16,5 +18,14 @@ import io.jmix.flowui.view.*;
 @ViewDescriptor("questions-for-team-list-view.xml")
 @LookupComponent("questionsForTeamsDataGrid")
 @DialogMode(width = "64em")
-public class QuestionsForTeamListView extends StandardListView<QuestionsForTeam> {
+public class QuestionsForTeamListView extends StandardListView<QuestionForTeam> {
+    @ViewComponent
+    private JmixButton editBtn;
+
+    @Subscribe("questionsForTeamsDataGrid")
+    public void onQuestionsForTeamsDataGridItemClick(final ItemClickEvent<QuestionForTeam> event) {
+        if (event.getItem().getTeam().getStartedAt() != null) {
+            editBtn.setEnabled(false);
+        }
+    }
 }
